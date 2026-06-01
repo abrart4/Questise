@@ -1,15 +1,22 @@
 package abr.tas.questise;
 
+import abr.tas.questise.gui.QuestisePanel;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Questise {
-    private static final Questise INSTANCE = new ;
+public class Questise implements ActionListener {
+    private static final Questise INSTANCE = new Questise();
 
     public static Questise getInstance() {
         return INSTANCE;
     }
 
+    private Questise() {}
+
+    private final Timer timer = new Timer(0, this);
     private JFrame frame;
     private QuestisePanel panel;
 
@@ -20,12 +27,25 @@ public class Questise {
         frame.setSize((int) (screenSize.getHeight() / 2), (int) (screenSize.getWidth() / 2));
         frame.setLocationRelativeTo(null);
 
-        panel = new QuestisePanel();
+        panel = QuestisePanel.getInstance();
         frame.add(panel);
         frame.setVisible(true);
+        timer.start();
+        for (Font font: GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
+            System.out.println(font);
+        }
+    }
+
+    private void loop() {
+        panel.loop();
     }
 
     public static void main(String[] args) {
         Questise.getInstance().run();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        loop();
     }
 }
