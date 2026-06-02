@@ -18,8 +18,10 @@ public class QuestisePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        currentScreen.draw(g);
+        currentScreen.draw(g, getWidth(), getHeight());
     }
+
+
 
     public void loop() {
         repaint();

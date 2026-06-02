@@ -24,8 +24,9 @@ public class Questise implements ActionListener {
         frame = new JFrame("Questise");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setSize((int) (screenSize.getHeight() / 2), (int) (screenSize.getWidth() / 2));
+        frame.setSize((int) (screenSize.getWidth() / 3), (int) (screenSize.getHeight() / 1.2));
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
 
         panel = QuestisePanel.getInstance();
         frame.add(panel);
