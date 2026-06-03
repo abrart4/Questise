@@ -13,15 +13,13 @@ public class QuestisePanel extends JPanel {
         return INSTANCE;
     }
 
-    private Screen currentScreen = new TitleScreen();
+    private Screen currentScreen = new TitleScreen(this, getWidth(), getHeight());
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        currentScreen.draw(g, getWidth(), getHeight());
+        currentScreen.draw(g);
     }
-
-
 
     public void loop() {
         repaint();
