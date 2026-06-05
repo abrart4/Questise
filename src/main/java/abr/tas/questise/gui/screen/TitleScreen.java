@@ -12,16 +12,14 @@ import java.awt.event.ActionListener;
 public class TitleScreen extends Screen implements ActionListener {
     public TitleScreen(QuestisePanel panel, int width, int height) {
         super(panel, width, height);
-        panel.setLayout(null);
-        panel.setBounds(0, 0, 400, 1000);
         JLabel titleText = new JLabel("Questise");
         titleText.setFont(Fonts.TITLE_FONT);
+        Point kf = MouseInfo.getPointerInfo().getLocation();
+        titleText.setBounds((int) kf.getX(), (int) kf.getY(), 40, 50);
         panel.add(titleText);
         JButton playButton = new JButton("Play");
-        playButton
         playButton.addActionListener(this);
         panel.add(playButton);
-
     }
 
     @Override
@@ -31,6 +29,6 @@ public class TitleScreen extends Screen implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        panel.openScreen(new GameScreen(this));
     }
 }

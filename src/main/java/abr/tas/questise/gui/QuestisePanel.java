@@ -21,6 +21,11 @@ public class QuestisePanel extends JPanel {
         currentScreen.draw(g);
     }
 
+    public void openScreen(Screen screen) {
+        currentScreen.close();
+        currentScreen = screen;
+    }
+
     public void loop() {
         repaint();
     }
