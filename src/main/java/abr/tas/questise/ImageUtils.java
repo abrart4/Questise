@@ -8,7 +8,7 @@ import java.io.IOException;
 public class ImageUtils {
     public static BufferedImage create(String file) {
         try {
-            return ImageIO.read(new File(file));
+            return ImageIO.read(new File("src/main/resources/" + file));
         }
         catch (IOException e) {
             throw new RuntimeException(e);

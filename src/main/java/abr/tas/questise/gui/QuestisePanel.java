@@ -5,6 +5,12 @@ import abr.tas.questise.gui.screen.TitleScreen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+
 
 public class QuestisePanel extends JPanel {
     private static final QuestisePanel INSTANCE = new QuestisePanel();
@@ -13,7 +19,7 @@ public class QuestisePanel extends JPanel {
         return INSTANCE;
     }
 
-    private Screen currentScreen = new TitleScreen(this, getWidth(), getHeight());
+    private Screen currentScreen = new TitleScreen(this);
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -22,7 +28,6 @@ public class QuestisePanel extends JPanel {
     }
 
     public void openScreen(Screen screen) {
-        currentScreen.close();
         currentScreen = screen;
     }
 
