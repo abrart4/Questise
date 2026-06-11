@@ -28,6 +28,7 @@ public class QuestisePanel extends JPanel {
     }
 
     public void openScreen(Screen screen) {
+        if (screen != null) screen.close();
         currentScreen = screen;
     }
 

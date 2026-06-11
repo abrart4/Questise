@@ -4,10 +4,12 @@ package abr.tas.questise.gui.components;
 
 import abr.tas.questise.ImageUtils;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-
+import java.io.File;
+import java.io.IOException;
 
 
 public class QButton {
@@ -18,7 +20,11 @@ public class QButton {
     public final int height;
 
     public QButton(String imageName, int centerX, int centerY, int widthDownscale, int heightDownscale) {
-        image = ImageUtils.create(imageName);
+        try {
+            image = ImageIO.read(new File("src/main/resources/" + imageName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         width = image.getWidth(null) / widthDownscale;
         height = image.getHeight(null) / heightDownscale;
         image = image.getScaledInstance(width, height, 0);
