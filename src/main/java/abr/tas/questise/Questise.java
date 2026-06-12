@@ -29,6 +29,7 @@ public class Questise implements ActionListener {
         frame.setResizable(false);
 
         panel = QuestisePanel.getInstance();
+        panel.requestFocusInWindow();
         frame.add(panel);
         frame.setVisible(true);
         timer.start();

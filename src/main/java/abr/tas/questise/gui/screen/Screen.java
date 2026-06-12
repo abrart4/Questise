@@ -30,7 +30,9 @@ public abstract class Screen implements MouseListener, KeyListener {
     public abstract void draw(Graphics g);
 
     public void close() {
-        panel.openScreen(previous);
+        panel.removeMouseListener(this);
+        panel.removeKeyListener(this);
+        //panel.openScreen(previous);
     }
 
     public static void drawCenteredString(Graphics g, String string, int x, int y) {
@@ -66,5 +68,20 @@ public abstract class Screen implements MouseListener, KeyListener {
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println(e.getKeyChar());
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println(e.getKeyChar());
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        System.out.println(e.getKeyChar());
     }
 }
