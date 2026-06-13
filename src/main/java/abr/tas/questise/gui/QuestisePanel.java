@@ -1,4 +1,7 @@
-package abr.tas.questise;
+package abr.tas.questise.gui;
+
+import abr.tas.questise.QuestiseConstants;
+import abr.tas.questise.Utils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,21 +18,22 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener 
         return INSTANCE;
     }
 
-    private final BufferedImage BACKGROUND_NORMAL_IMAGE = createImage("background_normal.jpg");
-    private final BufferedImage BACKGROUND_DARKENED_IMAGE = createImage("background_darkened.jpg");
-    private static final BufferedImage TITLE_IMAGE = createImage("logo.png");
+    private final Image TITLE_IMAGE;
     private boolean inMenu = true;
+
 
     private QuestisePanel() {
         setLayout(null);
-        setBounds(0, 0, 480, 720);
+        setBounds(0, 0, QuestiseConstants.WIDTH, QuestiseConstants.HEIGHT);
+        TITLE_IMAGE = Utils.createImage("logo.png").getScaledInstance((int) (getWidth() * 0.75), (int) (getWidth() * 0.125), 0);
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics gl) {
+        Graphics2D g = (Graphics2D) gl;
         super.paintComponent(g);
-        g.drawImage(inMenu ? BACKGROUND_DARKENED_IMAGE : BACKGROUND_NORMAL_IMAGE, 0, 0, null);
-        drawCenteredImage(g, TITLE_IMAGE.getScaledInstance(1024 / 3, 342 / 6, 0), 240, 50);
+        Background.getInstance().draw(g, inMenu);
+        drawCenteredImage(g, TITLE_IMAGE, getWidth() / 2, 50);
     }
 
     public void draw() {
@@ -84,14 +88,5 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener 
 
     public static void drawCenteredImage(Graphics g, Image image, int x, int y) {
         g.drawImage(image, x - (image.getWidth(null) / 2), y - (image.getHeight(null) / 2), null);
-    }
-
-    public static BufferedImage createImage(String fileName) {
-        try {
-            return ImageIO.read(new File("src/main/resources/" + fileName));
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
