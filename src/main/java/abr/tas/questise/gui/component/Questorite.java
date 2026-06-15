@@ -14,7 +14,7 @@ public class Questorite {
     }
 
     public void incrementY() {
-        if (increment ++ % 2 == 0) y ++;
+        y += 2;
     }
 
     public int getX() {

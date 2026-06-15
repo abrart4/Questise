@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Questise implements ActionListener {
-    private Timer loopTimer = new Timer(0, this);
+    private Timer loopTimer = new Timer(17, this);
 
     private void start() {
         JFrame frame = new JFrame("Questise");
@@ -21,6 +21,7 @@ public class Questise implements ActionListener {
         frame.add(panel);
         frame.setVisible(true);
         panel.requestFocusInWindow();
+        frame.setAlwaysOnTop(true);
         loopTimer.start();
 
     }

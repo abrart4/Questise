@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
 
-public class QuestisePanel extends JPanel implements MouseListener, KeyListener, ActionListener {
+public class QuestisePanel extends JPanel implements MouseListener, KeyListener {
     private static final QuestisePanel INSTANCE = new QuestisePanel();
 
     public static QuestisePanel getInstance() {
@@ -44,13 +44,17 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     private Graphics2D g;
 
     private int hearts;
+    private int tick = 0;
     private long timeStarted;
     private long timeEnded;
     private int playerX;
+    private Timer movementTimer = new Timer(25, this::onMovement);
+    private boolean leftPressed;
+    private boolean rightPressed;
     private Rectangle playerRectangle = new Rectangle(playerX, 640, 30, 30);
     private ArrayList<Questorite> questorites = new ArrayList<>();
-    private boolean haveSpawnedInExtra = false;
-    private Timer questionBoardTimer = new Timer(5000, this);
+    private boolean haveSpawnedInExtra;
+    private Timer questionBoardTimer = new Timer(5000, this::onQuestionBoard);
     private QuestionBoard questionBoard;
     private int amountAnswered = 0;
 
@@ -74,10 +78,14 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
 
     private void startGame() {
         screen = Screen.GAME;
+        tick = 0;
         hearts = 3;
         timeStarted = System.currentTimeMillis();
         timeEnded = System.currentTimeMillis();
         playerX = 240;
+        movementTimer.start();
+        leftPressed = false;
+        rightPressed = false;
         playerRectangle = new Rectangle(playerX, 640, 30, 30);
         questorites.clear();
         questorites.add(new Questorite(150, 400));
@@ -94,7 +102,7 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
         timeEnded = System.currentTimeMillis();
     }
 
-    private void onQuestionBoard() {
+    private void onQuestionBoard(ActionEvent e) {
         if (questionBoard == null) {
             questionBoard = new RecursiveIntegerBoard();
         }
@@ -150,6 +158,7 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     }
 
     private void drawGameScreen() {
+        tick ++;
         g.setStroke(LINE_STROKE);
         g.setColor(Color.BLACK);
         g.drawLine(120, 360, 120, 720);
@@ -205,6 +214,21 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
         questorites.add(new Questorite(Utils.random(120, 330), Utils.random(380, 420)));
     }
 
+    private void onMovement(ActionEvent e) {
+
+        int newX = playerX;
+            if (leftPressed) {
+                newX -= MOVEMENT_AMOUNT;
+            }
+            if (rightPressed) {
+                newX += MOVEMENT_AMOUNT;
+            }
+        if (newX >= 120 && newX <= 360) {
+            playerX = newX;
+            playerRectangle = new Rectangle(playerX, 640, 30, 30);
+        }
+    }
+
     public void draw() {
         repaint();
     }
@@ -217,22 +241,24 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        int newX = playerX;
         if (keyCode == LEFT_KEY_CODE) {
-            newX -= MOVEMENT_AMOUNT;
+            leftPressed = true;
         }
         if (keyCode == RIGHT_KEY_CODE) {
-            newX += MOVEMENT_AMOUNT;
-        }
-        if (newX >= 120 && newX <= 360) {
-            playerX = newX;
-            playerRectangle = new Rectangle(playerX, 640, 30, 30);
+            rightPressed = true;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+        int keyCode = e.getKeyCode();
+        if (keyCode == LEFT_KEY_CODE) {
+            leftPressed = false;
+        }
+        if (keyCode == RIGHT_KEY_CODE) {
+            rightPressed = false;
+        }
+        if (keyCode == KeyEvent.VK_ESCAPE) {
             screen = Screen.TITLE;
         }
     }
@@ -291,11 +317,6 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     @Override
     public void mouseExited(MouseEvent e) {
 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        onQuestionBoard();
     }
 
     public void drawCenteredString(String string, int y) {
