@@ -246,8 +246,7 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println(e.getX());
-        System.out.println(e.getY());
+
     }
 
     @Override
