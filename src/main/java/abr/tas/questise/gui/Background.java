@@ -19,7 +19,7 @@ public class Background {
     private final BufferedImage BACKGROUND_NORMAL_IMAGE = Utils.createImage("background_normal.jpg");
     private final BufferedImage BACKGROUND_DARKENED_IMAGE = Utils.createImage("background_darkened.jpg");
     private int backgroundX = 0;
-    private double backgroundXModifier = 0.25;
+    private final double backgroundXModifier = 0.25;
     private int increment = 0;
 
     private Background() {}

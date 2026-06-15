@@ -12,16 +12,17 @@ public class Questise implements ActionListener {
     private void start() {
         JFrame frame = new JFrame("Questise");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(QuestiseConstants.WIDTH, QuestiseConstants.HEIGHT);
+        frame.setSize(480, 720);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
         JPanel panel = QuestisePanel.getInstance();
-        panel.requestFocusInWindow();
         frame.add(panel);
         frame.setVisible(true);
+        panel.requestFocusInWindow();
         loopTimer.start();
+
     }
 
     @Override

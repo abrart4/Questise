@@ -1,0 +1,35 @@
+package abr.tas.questise.gui.component;
+
+
+
+public class Questorite {
+    private int increment = 0;
+
+    private int x;
+    private int y;
+
+    public Questorite(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void incrementY() {
+        if (increment ++ % 2 == 0) y ++;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+}
