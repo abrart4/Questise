@@ -26,6 +26,8 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     private final int MOVEMENT_AMOUNT = 10;
     private final Font HELP_FONT = new Font("MS Gothic", Font.BOLD, 30);
     private final Font STATS_FONT = new Font("MS Gothic", Font.BOLD, 25);
+    private final Font WARNING_FONT = STATS_FONT.deriveFont(20f);
+    private final Font GAME_OVER_FONT = new Font("MS Gothic", Font.PLAIN, 40);
     private final Stroke LINE_STROKE = new BasicStroke(3);
     private final Image TITLE_IMAGE;
     private final Image PURE_ART_IMAGE;
@@ -78,7 +80,9 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
         playerRectangle = new Rectangle(playerX, 640, 30, 30);
         questorites.clear();
         questorites.add(new Questorite(150, 400));
+        questorites.add(new Questorite(195, 400));
         questorites.add(new Questorite(240, 400));
+        questorites.add(new Questorite(285, 400));
         questorites.add(new Questorite(330, 400));
         questionBoardTimer.start();
         questionBoard = null;
@@ -119,6 +123,9 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     private void drawTitleScreen() {
         drawCenteredImage(TITLE_IMAGE, 50);
         drawCenteredImage(PURE_ART_IMAGE, 300);
+        g.setColor(Color.WHITE);
+        g.setFont(WARNING_FONT);
+        drawCenteredString("(please don't collect the questorites!)", 500);
         PLAY_BUTTON.draw(g);
         HELP_BUTTON.draw(g);
     }
@@ -182,7 +189,7 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
         g.setColor(Color.GRAY);
         g.fillRect(80, 175, 320, 330);
         g.setColor(Color.WHITE);
-        g.setFont(new Font("MS Gothic", Font.PLAIN, 40));
+        g.setFont(GAME_OVER_FONT);
         drawCenteredString("Game over!", 240);
         drawCenteredString("You survived", 300);
         drawCenteredString(((double) timeEnded - timeStarted) / 1000 + " seconds.", 340);
