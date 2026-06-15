@@ -20,8 +20,9 @@ public class Questise implements ActionListener {
         JPanel panel = QuestisePanel.getInstance();
         frame.add(panel);
         frame.setVisible(true);
-        panel.requestFocusInWindow();
+
         frame.setAlwaysOnTop(true);
+        panel.requestFocusInWindow();
         loopTimer.start();
 
     }
