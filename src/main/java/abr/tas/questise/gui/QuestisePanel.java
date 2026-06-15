@@ -49,6 +49,7 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     private int playerX;
     private Rectangle playerRectangle = new Rectangle(playerX, 640, 30, 30);
     private ArrayList<Questorite> questorites = new ArrayList<>();
+    private boolean haveSpawnedInExtra = false;
     private Timer questionBoardTimer = new Timer(5000, this);
     private QuestionBoard questionBoard;
     private int amountAnswered = 0;
@@ -80,10 +81,9 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
         playerRectangle = new Rectangle(playerX, 640, 30, 30);
         questorites.clear();
         questorites.add(new Questorite(150, 400));
-        questorites.add(new Questorite(195, 400));
         questorites.add(new Questorite(240, 400));
-        questorites.add(new Questorite(285, 400));
         questorites.add(new Questorite(330, 400));
+        haveSpawnedInExtra = false;
         questionBoardTimer.start();
         questionBoard = null;
         amountAnswered = 0;
@@ -175,6 +175,11 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
                 spawnNewQuestorite();
             }
             if (questoriteY > 720) {
+                if (!haveSpawnedInExtra) {
+                    haveSpawnedInExtra = true;
+                    spawnNewQuestorite();
+                    spawnNewQuestorite();
+                }
                 questorite.setX(Utils.random(120, 330));
                 questorite.setY(Utils.random(380, 420));
             }
