@@ -3,7 +3,7 @@ package abr.tas.questise.visual.screen;
 
 
 import abr.tas.questise.Utils;
-import abr.tas.questise.visual.Background;
+import abr.tas.questise.visual.component.Background;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

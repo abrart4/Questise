@@ -2,6 +2,7 @@ package abr.tas.questise.visual.screen;
 
 
 
+import abr.tas.questise.Logger;
 import abr.tas.questise.Utils;
 import abr.tas.questise.visual.QuestisePanel;
 import abr.tas.questise.visual.component.QButton;
@@ -21,6 +22,7 @@ public class GameOverScreen extends Screen {
     private GameOverScreen(Screen previous, long timeStarted, long timeEnded) {
         super(previous);
         this.timeSurvived = ((double) timeEnded - timeStarted) / 1000;
+        Logger.log("Ended game with " + timeSurvived + " seconds survived");
     }
 
     @Override

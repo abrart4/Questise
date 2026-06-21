@@ -2,7 +2,7 @@ package abr.tas.questise.visual.screen;
 
 
 
-import abr.tas.questise.Questise;
+import abr.tas.questise.Logger;
 import abr.tas.questise.Utils;
 import abr.tas.questise.visual.QuestisePanel;
 import abr.tas.questise.visual.component.Questorite;
@@ -47,6 +47,7 @@ public class GameScreen extends Screen {
         questorites.add(new Questorite(240, 400));
         questorites.add(new Questorite(330, 400));
         questionBoardTimer.start();
+        Logger.log("Starting game");
     }
 
     @Override
