@@ -71,4 +71,8 @@ public abstract class QuestionBoard {
         }
         return QuestionResult.FAIL;
     }
+
+    public static QuestionBoard getRandomQuestionBoard() {
+        return new RecursiveIntegerBoard();
+    }
 }

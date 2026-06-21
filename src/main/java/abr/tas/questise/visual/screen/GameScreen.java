@@ -8,7 +8,6 @@ import abr.tas.questise.visual.QuestisePanel;
 import abr.tas.questise.visual.component.Questorite;
 import abr.tas.questise.question.QuestionBoard;
 import abr.tas.questise.question.QuestionResult;
-import abr.tas.questise.question.RecursiveIntegerBoard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -94,7 +93,7 @@ public class GameScreen extends Screen {
 
     private void handleQuestionBoardTimer(ActionEvent e) {
         if (questionBoard == null) {
-            questionBoard = new RecursiveIntegerBoard();
+            questionBoard = QuestionBoard.getRandomQuestionBoard();
         }
         pings ++;
         if (pings % 3 == 0) {
