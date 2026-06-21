@@ -24,6 +24,7 @@ public class HelpScreen extends Screen {
 
     @Override
     public void draw(Graphics2D g) {
+        super.draw(g);
         drawCenteredImage(TITLE_IMAGE, 50);
         g.setColor(Color.WHITE);
         g.setFont(HELP_FONT);
