@@ -6,10 +6,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Questise implements ActionListener {
+public class Questise {
+    private static final int WIDTH = 480;
+    private static final int HEIGHT = 720;
+
     private static boolean started = false;
 
-    private Timer loopTimer = new Timer(17, this);
+    private Timer loopTimer = new Timer(17, (_) -> QuestisePanel.getInstance().draw());
 
     public void start() {
         if (started) {
@@ -18,9 +21,11 @@ public class Questise implements ActionListener {
         }
         started = true;
         Logger.log("Starting Questise");
+        Logger.log("- Operating system: " +  System.getProperty("os.name"));
+        Logger.log("- Dimensions: " + WIDTH + ", " + HEIGHT);
         JFrame frame = new JFrame("Questise");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(480, 720);
+        frame.setSize(WIDTH, HEIGHT);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -28,15 +33,7 @@ public class Questise implements ActionListener {
         JPanel panel = QuestisePanel.getInstance();
         frame.add(panel);
         frame.setVisible(true);
-
-        //frame.setAlwaysOnTop(true);
         panel.requestFocusInWindow();
         loopTimer.start();
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        QuestisePanel.getInstance().draw();
     }
 }
