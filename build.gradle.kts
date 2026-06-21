@@ -4,3 +4,11 @@ plugins {
 
 group = "abr.tas"
 version = "1.0.0"
+
+tasks {
+    jar {
+        manifest {
+            attributes["Main-Class"] = "abr.tas.questise.Questise"
+        }
+    }
+}

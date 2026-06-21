@@ -52,7 +52,7 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     private boolean haveSpawnedInExtra = false;
     private Timer questionBoardTimer = new Timer(5000, this);
     private QuestionBoard questionBoard;
-    private int amountAnswered = 0;
+    private int pings = 0;
 
     private QuestisePanel() {
         setLayout(null);
@@ -86,7 +86,7 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
         haveSpawnedInExtra = false;
         questionBoardTimer.start();
         questionBoard = null;
-        amountAnswered = 0;
+        pings = 0;
     }
 
     private void endGame() {
@@ -97,6 +97,10 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
     private void onQuestionBoard() {
         if (questionBoard == null) {
             questionBoard = new RecursiveIntegerBoard();
+        }
+        pings ++;
+        if (pings % 3 == 0) {
+            spawnNewQuestorite();
         }
     }
 
@@ -159,7 +163,7 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
         g.setColor(Color.WHITE);
         g.setFont(STATS_FONT);
         drawCenteredString(hearts + " hearts", 20);
-        drawCenteredString(amountAnswered + " answered", 50);
+        drawCenteredString(pings + " answered", 50);
         drawCenteredImage(PLAYER_IMAGE, playerX, 640);
         for (int i = 0; i < questorites.size(); i ++) {
             Questorite questorite = questorites.get(i);
@@ -244,10 +248,6 @@ public class QuestisePanel extends JPanel implements MouseListener, KeyListener,
                 QuestionResult result = questionBoard.onClick(e);
                 if (result.answered()) {
                     questionBoard = null;
-                    amountAnswered ++;
-                    if (amountAnswered % 3 == 0) {
-                        spawnNewQuestorite();
-                    }
                 }
                 if (result.correct()) {
                     hearts ++;

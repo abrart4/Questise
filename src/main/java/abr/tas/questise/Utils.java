@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Utils {
     public static BufferedImage createImage(String fileName) {
         try {
-            return ImageIO.read(new File("src/main/resources/" + fileName));
+            return ImageIO.read(Utils.class.getClassLoader().getResource("assets/" + fileName));
         }
         catch (IOException e) {
             throw new RuntimeException(e);
