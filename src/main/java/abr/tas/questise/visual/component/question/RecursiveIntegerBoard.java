@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 public class RecursiveIntegerBoard extends QuestionBoard {
-    private static final BufferedImage RECURSIVE_INTEGER_MYSTERY_IMAGE = Utils.createImage("assets/recursive_integer_mystery.png");
+    private static final BufferedImage RECURSIVE_INTEGER_MYSTERY_IMAGE = Utils.createImage("recursive_integer_mystery.png");
     private static final ArrayList<Rectangle> ANSWER_RECTANGLES = new ArrayList<>();
     private final int parameter;
     private final int value;

@@ -3,8 +3,6 @@ package abr.tas.questise.visual.component;
 
 
 public class Questorite {
-    private int increment = 0;
-
     private int x;
     private int y;
 

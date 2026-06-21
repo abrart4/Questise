@@ -21,7 +21,7 @@ public class Questise implements ActionListener {
         frame.add(panel);
         frame.setVisible(true);
 
-        frame.setAlwaysOnTop(true);
+        //frame.setAlwaysOnTop(true);
         panel.requestFocusInWindow();
         loopTimer.start();
 
