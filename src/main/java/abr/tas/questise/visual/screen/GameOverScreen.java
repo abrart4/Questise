@@ -8,6 +8,7 @@ import abr.tas.questise.visual.component.QButton;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 
 
