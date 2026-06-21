@@ -7,9 +7,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Questise implements ActionListener {
+    private static boolean started = false;
+
     private Timer loopTimer = new Timer(17, this);
 
-    private void start() {
+    public void start() {
+        if (started) {
+            Logger.log("Already started! Returning...");
+            return;
+        }
+        started = true;
+        Logger.log("Starting Questise");
         JFrame frame = new JFrame("Questise");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(480, 720);
@@ -31,9 +39,4 @@ public class Questise implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         QuestisePanel.getInstance().draw();
     }
-
-    public static void main(String[] args) {
-        new Questise().start();
-    }
-
 }
