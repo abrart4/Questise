@@ -1,11 +1,11 @@
-package abr.tas.questise.gui;
+package abr.tas.questise.visual;
 
 import abr.tas.questise.Utils;
-import abr.tas.questise.gui.component.QButton;
-import abr.tas.questise.gui.component.Questorite;
-import abr.tas.questise.gui.component.question.QuestionBoard;
-import abr.tas.questise.gui.component.question.QuestionResult;
-import abr.tas.questise.gui.component.question.RecursiveIntegerBoard;
+import abr.tas.questise.visual.component.QButton;
+import abr.tas.questise.visual.component.Questorite;
+import abr.tas.questise.visual.component.question.QuestionBoard;
+import abr.tas.questise.visual.component.question.QuestionResult;
+import abr.tas.questise.visual.component.question.RecursiveIntegerBoard;
 
 import javax.swing.*;
 import java.awt.*;

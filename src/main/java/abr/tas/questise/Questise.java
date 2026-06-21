@@ -1,6 +1,6 @@
 package abr.tas.questise;
 
-import abr.tas.questise.gui.QuestisePanel;
+import abr.tas.questise.visual.QuestisePanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

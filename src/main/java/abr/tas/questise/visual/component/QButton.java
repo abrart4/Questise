@@ -1,10 +1,9 @@
-package abr.tas.questise.gui.component;
+package abr.tas.questise.visual.component;
 
 
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
 
 
