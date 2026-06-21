@@ -6,14 +6,13 @@ import abr.tas.questise.Logger;
 import abr.tas.questise.Utils;
 import abr.tas.questise.visual.QuestisePanel;
 import abr.tas.questise.visual.component.Questorite;
-import abr.tas.questise.visual.component.question.QuestionBoard;
-import abr.tas.questise.visual.component.question.QuestionResult;
-import abr.tas.questise.visual.component.question.RecursiveIntegerBoard;
+import abr.tas.questise.question.QuestionBoard;
+import abr.tas.questise.question.QuestionResult;
+import abr.tas.questise.question.RecursiveIntegerBoard;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;

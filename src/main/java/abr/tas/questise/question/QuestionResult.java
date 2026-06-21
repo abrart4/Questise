@@ -1,4 +1,4 @@
-package abr.tas.questise.visual.component.question;
+package abr.tas.questise.question;
 
 
 
